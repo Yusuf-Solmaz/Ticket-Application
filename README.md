@@ -2,4 +2,4 @@
 Ticket Application Project for Runner Club
 ###                                              E/R Diagram
 
-![Felece - Page 1 (1)](https://user-images.githubusercontent.com/83172478/213097087-ee374a5e-7141-4183-8155-4b35ec80c34c.png)
+![image](https://user-images.githubusercontent.com/83172478/213097184-346721ef-488e-4fbe-9e18-702bc6ec41f5.png)
