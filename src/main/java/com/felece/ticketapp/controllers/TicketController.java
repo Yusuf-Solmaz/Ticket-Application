@@ -27,4 +27,9 @@ public class TicketController {
     public Ticket save(@RequestBody Ticket ticket){
         return ticketService.saveTicket(ticket);
     }
+
+    @DeleteMapping
+    public void delete(@RequestParam Long id){
+        ticketService.deleteTicket(id);
+    }
 }

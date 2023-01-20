@@ -4,9 +4,13 @@ package com.felece.ticketapp.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+
+
 import java.util.List;
+
 
 @Table(name = "vehicle")
 @Data
@@ -21,7 +25,7 @@ public class Vehicle {
     private int numberOfEmptySeats;
     private String plateNumber;
     private String Brand;
-    private boolean isActive;
+    private boolean isActive =true;
 
     @ManyToOne
     @JoinColumn(name = "route_id")

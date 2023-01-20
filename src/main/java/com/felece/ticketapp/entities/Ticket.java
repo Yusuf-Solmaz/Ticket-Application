@@ -18,7 +18,7 @@ public class Ticket {
     private Long id;
     private Date date;
     private String price;
-    private Boolean isActive;
+    private Boolean isActive = true;
     @Enumerated(EnumType.STRING)
     private Status status;
 

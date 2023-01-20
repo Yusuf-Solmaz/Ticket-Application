@@ -10,4 +10,5 @@ import java.util.List;
 public interface TicketService {
     Ticket saveTicket(Ticket ticket);
     List<Ticket> getAll();
+    void deleteTicket(Long id);
 }
