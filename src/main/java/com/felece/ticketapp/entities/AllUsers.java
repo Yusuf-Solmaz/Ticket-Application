@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance (strategy = InheritanceType.JOINED)
 public class AllUsers {
 
     @Id
@@ -20,9 +21,5 @@ public class AllUsers {
     String lastName;
     String password;
 
-    @OneToOne(mappedBy = "allUsers")
-    private User user;
 
-    @OneToOne(mappedBy = "allUsers")
-    private Admin admin;
 }

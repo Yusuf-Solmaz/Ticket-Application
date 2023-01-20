@@ -23,7 +23,5 @@ public class Route {
     @JoinColumn(name = "vehicle_id")
     private List<Vehicle> vehicles;
 
-    @OneToMany
-    @JoinColumn(name = "ticket_id")
-    private List<Ticket> tickets;
+
 }

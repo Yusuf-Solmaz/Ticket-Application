@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Table(name = "vehicle")
 @Data
 @AllArgsConstructor
@@ -24,4 +26,8 @@ public class Vehicle {
     @ManyToOne
     @JoinColumn(name = "route_id")
     private Route route;
+
+    @OneToMany
+    @JoinColumn(name = "ticket_id")
+    private List<Ticket> tickets;
 }

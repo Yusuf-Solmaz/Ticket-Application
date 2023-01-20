@@ -3,6 +3,7 @@ package com.felece.ticketapp.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -12,16 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Data
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@EqualsAndHashCode(callSuper=false)
+public class User extends AllUsers{
+
     private String individualMail;
     private String phoneNumber;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
-    private AllUsers allUsers;
+
 
     @OneToMany
     @JoinColumn(name = "ticket_id")

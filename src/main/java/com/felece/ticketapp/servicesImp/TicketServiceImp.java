@@ -19,7 +19,18 @@ public class TicketServiceImp implements TicketService {
 
     @Override
     public Ticket saveTicket(Ticket ticket) {
-        return ticketRepository.save(ticket);
+        if(ticket.getVehicle().getNumberOfEmptySeats()>0){
+            ticket.getVehicle().setNumberOfEmptySeats( ticket.getVehicle().getNumberOfEmptySeats()-1);
+            if (ticket.getVehicle().getNumberOfEmptySeats()==0){
+                ticket.getVehicle().setActive(false);
+            }
+            return ticketRepository.save(ticket);
+        }
+        else{
+            System.out.println("Bu araçta boş koltuk yok.");
+            return null;
+        }
+
     }
 
     @Override

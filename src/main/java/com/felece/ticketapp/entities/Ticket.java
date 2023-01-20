@@ -26,7 +26,10 @@ public class Ticket {
     @JoinColumn(name = "user_id")
     private User user;
 
+
     @ManyToOne
-    @JoinColumn(name = "route_id")
-    private Route route;
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicle;
+
+
 }
