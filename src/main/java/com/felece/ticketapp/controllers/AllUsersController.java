@@ -1,10 +1,11 @@
 package com.felece.ticketapp.controllers;
 
+import com.felece.ticketapp.entities.AllUsers;
 import com.felece.ticketapp.services.AllUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/allUsers")
@@ -17,4 +18,12 @@ public class AllUsersController {
     public AllUsersController(AllUsersService allUsersService) {
         this.allUsersService = allUsersService;
     }
+
+
+    @GetMapping("/getAll")
+    public List<AllUsers> getAll(){
+        return allUsersService.getAll();
+    }
+
+
 }

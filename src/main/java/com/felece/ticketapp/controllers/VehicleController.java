@@ -1,10 +1,11 @@
 package com.felece.ticketapp.controllers;
 
+import com.felece.ticketapp.entities.Vehicle;
 import com.felece.ticketapp.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/vehicles")
@@ -18,4 +19,13 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
+    @GetMapping("/getAll")
+    public List<Vehicle> getAll(){
+        return vehicleService.getAll();
+    }
+
+    @PostMapping
+    public Vehicle save(@RequestBody Vehicle vehicle){
+        return vehicleService.saveVehicle(vehicle);
+    }
 }

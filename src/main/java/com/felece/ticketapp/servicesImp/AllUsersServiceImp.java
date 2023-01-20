@@ -1,9 +1,12 @@
 package com.felece.ticketapp.servicesImp;
 
+import com.felece.ticketapp.entities.AllUsers;
 import com.felece.ticketapp.repositories.AllUsersRepository;
 import com.felece.ticketapp.services.AllUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AllUsersServiceImp implements AllUsersService {
@@ -13,5 +16,15 @@ public class AllUsersServiceImp implements AllUsersService {
     @Autowired
     public AllUsersServiceImp(AllUsersRepository allUsersRepository) {
         this.allUsersRepository = allUsersRepository;
+    }
+
+    @Override
+    public AllUsers saveAllUsers(AllUsers allUsers) {
+        return allUsersRepository.save(allUsers);
+    }
+
+    @Override
+    public List<AllUsers> getAll() {
+        return allUsersRepository.findAll();
     }
 }
