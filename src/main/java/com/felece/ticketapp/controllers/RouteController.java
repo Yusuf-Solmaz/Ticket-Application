@@ -27,4 +27,14 @@ public class RouteController {
     public Route save(@RequestBody Route route){
         return routeService.saveRoute(route);
     }
+
+    @PutMapping("/{routeId}")
+    public Route updateRoute(@PathVariable Long routeId,@RequestBody Route newRoute){
+        return routeService.updateRoute(routeId,newRoute);
+    }
+
+    @DeleteMapping("/{routeId}")
+    public void delete(@PathVariable Long routeId){
+        routeService.deleteRoute(routeId);
+    }
 }

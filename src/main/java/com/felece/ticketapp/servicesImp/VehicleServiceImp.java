@@ -32,4 +32,28 @@ public class VehicleServiceImp implements VehicleService {
     public Optional<Vehicle> filterById(Long id) {
         return vehicleRepository.findById(id);
     }
+
+    @Override
+    public void deleteVehicle(Long id) {
+        vehicleRepository.deleteById(id);
+    }
+
+    @Override
+    public Vehicle updateVehicle(Long vehicleId, Vehicle newVehicle) {
+        Optional<Vehicle> vehicle = vehicleRepository.findById(vehicleId);
+        if (vehicle.isPresent()){
+            Vehicle foundVehicle = vehicle.get();
+            foundVehicle.setNumberOfEmptySeats(newVehicle.getNumberOfEmptySeats());
+            foundVehicle.setPlateNumber(newVehicle.getPlateNumber());
+            foundVehicle.setBrand(newVehicle.getBrand());
+            foundVehicle.setActive(newVehicle.isActive());
+            foundVehicle.setRoute(newVehicle.getRoute());
+            vehicleRepository.save(foundVehicle);
+            return foundVehicle;
+        }
+        else {
+            System.out.println("Belirtilen id ile bağlantılı araç bulunamadı.");
+            return null;
+        }
+    }
 }

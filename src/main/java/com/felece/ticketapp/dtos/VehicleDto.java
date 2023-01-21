@@ -14,5 +14,5 @@ public class VehicleDto {
     private int numberOfEmptySeats;
     private String plateNumber;
     private String Brand;
-    private boolean isActive =true;
+    private boolean isActive;
 }

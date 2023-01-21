@@ -31,7 +31,7 @@ public class Vehicle {
     @JoinColumn(name = "route_id")
     private Route route;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "ticket_id")
     private List<Ticket> tickets;
 }

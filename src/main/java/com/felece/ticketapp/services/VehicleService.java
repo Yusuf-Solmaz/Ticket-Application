@@ -12,4 +12,6 @@ public interface VehicleService {
     Vehicle saveVehicle(Vehicle vehicle);
     List<Vehicle> getAll();
     Optional<Vehicle> filterById(Long id);
+    void deleteVehicle(Long id);
+    Vehicle updateVehicle(Long vehicleId, Vehicle newVehicle);
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface RouteService {
     Route saveRoute(Route route);
     List<Route> getAll();
+    void deleteRoute(Long id);
+    Route updateRoute(Long routeId,Route newRoute);
 }

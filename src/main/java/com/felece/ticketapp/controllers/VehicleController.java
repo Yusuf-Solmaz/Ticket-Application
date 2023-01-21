@@ -28,4 +28,14 @@ public class VehicleController {
     public Vehicle save(@RequestBody Vehicle vehicle){
         return vehicleService.saveVehicle(vehicle);
     }
+
+    @DeleteMapping("/{vehicleId}")
+    public void delete(@PathVariable Long vehicleId){
+        vehicleService.deleteVehicle(vehicleId);
+    }
+
+    @PutMapping("/{vehicleId}")
+    public Vehicle updateVehicle(@PathVariable Long vehicleId,@RequestBody Vehicle newVehicle){
+        return vehicleService.updateVehicle(vehicleId,newVehicle);
+    }
 }

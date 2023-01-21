@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
+
 
 @Data
 @Table(name = "route")
@@ -19,7 +21,7 @@ public class Route {
     private String departure;
     private String arrival;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "vehicle_id")
     private List<Vehicle> vehicles;
 
