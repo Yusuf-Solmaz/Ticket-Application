@@ -1,5 +1,6 @@
 package com.felece.ticketapp.controllers;
 
+import com.felece.ticketapp.dtos.UserFilterDto;
 import com.felece.ticketapp.entities.User;
 import com.felece.ticketapp.repositories.UserRepository;
 import com.felece.ticketapp.services.UserService;
@@ -40,5 +41,7 @@ public class UserController {
     public User updateUser(@PathVariable Long userId,@RequestBody User newUser){
         return userService.updateUser(userId,newUser);
     }
+
+
 
 }

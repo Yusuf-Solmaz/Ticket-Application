@@ -1,8 +1,11 @@
 package com.felece.ticketapp.servicesImp;
 
+import com.felece.ticketapp.dtos.TicketFilterDto;
+import com.felece.ticketapp.dtos.UserFilterDto;
 import com.felece.ticketapp.entities.Ticket;
 import com.felece.ticketapp.entities.Vehicle;
 import com.felece.ticketapp.repositories.TicketRepository;
+import com.felece.ticketapp.repositories.UserRepository;
 import com.felece.ticketapp.services.TicketService;
 import com.felece.ticketapp.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +18,13 @@ import java.util.Optional;
 public class TicketServiceImp implements TicketService {
     TicketRepository ticketRepository;
     VehicleService vehicleService;
+    UserRepository userRepository;
 
     @Autowired
-    public TicketServiceImp(TicketRepository ticketRepository,VehicleService vehicleService) {
+    public TicketServiceImp(TicketRepository ticketRepository,VehicleService vehicleService,UserRepository userRepository) {
         this.ticketRepository = ticketRepository;
         this.vehicleService=vehicleService;
+        this.userRepository=userRepository;
     }
 
     @Override
@@ -46,5 +51,19 @@ public class TicketServiceImp implements TicketService {
     public void deleteTicket(Long id) {
         Ticket ticket = ticketRepository.getById(id);
         ticketRepository.delete(ticket);
+    }
+
+    @Override
+    public List<TicketFilterDto> filterByUserId(Long userId) {
+        UserFilterDto userFilterDto = userRepository.filterById(userId);
+        return ticketRepository.filterByUserId(userFilterDto.getUserId());
+    }
+
+    @Override
+    public List<Ticket> getAllTickets(Optional<Long> userId) {
+        if(userId.isPresent())
+            return ticketRepository.findByUserId(userId.get());
+        return ticketRepository.findAll();
+
     }
 }

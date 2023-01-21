@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/vehicles")
@@ -37,5 +38,9 @@ public class VehicleController {
     @PutMapping("/{vehicleId}")
     public Vehicle updateVehicle(@PathVariable Long vehicleId,@RequestBody Vehicle newVehicle){
         return vehicleService.updateVehicle(vehicleId,newVehicle);
+    }
+    @GetMapping
+    public List<Vehicle> getAllVehicles(@RequestParam Optional<Long> routeId){
+        return vehicleService.getAllVehicles(routeId);
     }
 }

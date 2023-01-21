@@ -56,4 +56,11 @@ public class VehicleServiceImp implements VehicleService {
             return null;
         }
     }
+
+    @Override
+    public List<Vehicle> getAllVehicles(Optional<Long> routeId) {
+        if(routeId.isPresent())
+            return vehicleRepository.findByRouteId(routeId.get());
+        return vehicleRepository.findAll();
+    }
 }

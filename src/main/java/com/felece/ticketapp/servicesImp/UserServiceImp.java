@@ -1,5 +1,6 @@
 package com.felece.ticketapp.servicesImp;
 
+import com.felece.ticketapp.dtos.UserFilterDto;
 import com.felece.ticketapp.entities.User;
 import com.felece.ticketapp.repositories.UserRepository;
 import com.felece.ticketapp.services.UserService;
@@ -52,6 +53,11 @@ public class UserServiceImp implements UserService {
 
         }
     }
+
+    @Override
+    public UserFilterDto filterById(Long userId) {
+        return userRepository.filterById(userId);
     }
+}
 
 

@@ -1,5 +1,6 @@
 package com.felece.ticketapp.services;
 
+
 import com.felece.ticketapp.entities.Vehicle;
 import org.springframework.stereotype.Component;
 
@@ -14,4 +15,5 @@ public interface VehicleService {
     Optional<Vehicle> filterById(Long id);
     void deleteVehicle(Long id);
     Vehicle updateVehicle(Long vehicleId, Vehicle newVehicle);
+    List<Vehicle> getAllVehicles(Optional<Long> routeId);
 }

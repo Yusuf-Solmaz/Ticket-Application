@@ -1,11 +1,13 @@
 package com.felece.ticketapp.controllers;
 
+import com.felece.ticketapp.dtos.TicketFilterDto;
 import com.felece.ticketapp.entities.Ticket;
 import com.felece.ticketapp.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tickets")
@@ -31,5 +33,15 @@ public class TicketController {
     @DeleteMapping
     public void delete(@RequestParam Long id){
         ticketService.deleteTicket(id);
+    }
+
+    @GetMapping("/filter")
+    public List<TicketFilterDto> getFilterAll(@RequestParam Long userId){
+        return ticketService.filterByUserId(userId);
+    }
+
+    @GetMapping
+    public List<Ticket> getAllTickets(@RequestParam Optional<Long> userId){
+        return ticketService.getAllTickets(userId);
     }
 }
