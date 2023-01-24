@@ -1,5 +1,5 @@
 # Ticket-Application
 Ticket Application Project for Runner Club
 ### E/R Diagram
-<img src="https://user-images.githubusercontent.com/83172478/213849466-e2b72f20-7e95-4028-916a-bd27c8da4a7f.png" width="900" height="600"/>
+<img src="https://user-images.githubusercontent.com/83172478/214255147-3f2a621d-bc94-4e52-b7a0-e494c5440b80.png" width="900" height="600"/>
 
