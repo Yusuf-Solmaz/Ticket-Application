@@ -16,4 +16,6 @@ public interface VehicleService {
     void deleteVehicle(Long id);
     Vehicle updateVehicle(Long vehicleId, Vehicle newVehicle);
     List<Vehicle> getAllVehicles(Optional<Long> routeId);
+
+
 }

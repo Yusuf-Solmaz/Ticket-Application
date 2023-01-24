@@ -1,5 +1,6 @@
 package com.felece.ticketapp.repositories;
 
+import com.felece.ticketapp.dtos.TicketActiveDto;
 import com.felece.ticketapp.dtos.TicketFilterDto;
 import com.felece.ticketapp.entities.Ticket;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,4 +21,15 @@ public interface TicketRepository extends JpaRepository<Ticket,Long> {
     List<TicketFilterDto> filterByUserId(Long userId);
 
     List<Ticket> findByUserId(Long userId);
+
+    @Query(value = "SELECT NEW com.felece.ticketapp.dtos.TicketActiveDto" +
+            "(tf.id, tf.date,tf.price,tf.isActive,tf.status,tf.user.id,tf.vehicle)"+
+            "FROM Ticket tf" +
+            " where (:userId IS NULL OR tf.user.id =: userId AND tf.status='ALINDI') ")
+    List<TicketActiveDto> getAllActiveTickets(Long userId);
+
+
+
+
+
 }

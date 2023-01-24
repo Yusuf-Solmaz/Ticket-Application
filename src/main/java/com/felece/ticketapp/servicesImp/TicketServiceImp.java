@@ -1,8 +1,11 @@
 package com.felece.ticketapp.servicesImp;
 
+import com.felece.ticketapp.dtos.TicketActiveDto;
 import com.felece.ticketapp.dtos.TicketFilterDto;
 import com.felece.ticketapp.dtos.UserFilterDto;
+import com.felece.ticketapp.entities.Status;
 import com.felece.ticketapp.entities.Ticket;
+import com.felece.ticketapp.entities.User;
 import com.felece.ticketapp.entities.Vehicle;
 import com.felece.ticketapp.repositories.TicketRepository;
 import com.felece.ticketapp.repositories.UserRepository;
@@ -66,4 +69,26 @@ public class TicketServiceImp implements TicketService {
         return ticketRepository.findAll();
 
     }
+
+    @Override
+    public List<TicketActiveDto> getAllActiveTickets(Long userId) {
+        UserFilterDto userFilterDto = userRepository.filterById(userId);
+        return ticketRepository.getAllActiveTickets(userFilterDto.getUserId());
+    }
+
+    @Override
+    public Ticket updateTicketCancel(Long ticketId) {
+        Optional<Ticket> ticket = ticketRepository.findById(ticketId);
+        if (ticket.isPresent()){
+            Ticket foundTicket = ticket.get();
+            foundTicket.setStatus(Status.IPTAL_EDILDI);
+            ticketRepository.save(foundTicket);
+            return foundTicket;
+        }
+        else {
+            return null;
+        }
+    }
+
+
 }

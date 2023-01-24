@@ -1,7 +1,10 @@
 package com.felece.ticketapp.services;
 
+import com.felece.ticketapp.dtos.TicketActiveDto;
 import com.felece.ticketapp.dtos.TicketFilterDto;
+import com.felece.ticketapp.entities.Status;
 import com.felece.ticketapp.entities.Ticket;
+import com.felece.ticketapp.entities.Vehicle;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +17,9 @@ public interface TicketService {
     List<Ticket> getAll();
     void deleteTicket(Long id);
     List<TicketFilterDto> filterByUserId(Long userId);
-
     List<Ticket> getAllTickets(Optional<Long> userId);
+    List<TicketActiveDto> getAllActiveTickets(Long userId);
+
+    Ticket updateTicketCancel(Long ticketId);
+
 }

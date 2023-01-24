@@ -1,6 +1,7 @@
 package com.felece.ticketapp.services;
 
 import com.felece.ticketapp.dtos.UserFilterDto;
+import com.felece.ticketapp.entities.Ticket;
 import com.felece.ticketapp.entities.User;
 import org.springframework.stereotype.Component;
 
@@ -14,4 +15,6 @@ public interface UserService {
     void deleteUser(Long id);
     User updateUser(Long userId,User newUser);
     UserFilterDto filterById(Long userId);
+
+    User getOneUserByUserName(String userName);
 }

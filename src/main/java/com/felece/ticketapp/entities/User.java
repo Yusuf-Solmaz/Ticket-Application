@@ -1,27 +1,66 @@
 package com.felece.ticketapp.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
+import lombok.*;
+/*import org.hibernate.annotations.Cascade;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;*/
 import java.util.List;
 
 @Table(name="user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class User extends AllUsers{
+public class User /*implements UserDetails*/ {
 
-    private String individualMail;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String firstname;
+    private String lastName;
+    private String password;
+    private String email;
     private String phoneNumber;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "ticket_id")
     private List<Ticket> tickets;
+
+   /* @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }*/
 }

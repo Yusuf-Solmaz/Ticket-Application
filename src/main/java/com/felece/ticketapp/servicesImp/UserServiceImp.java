@@ -1,6 +1,9 @@
 package com.felece.ticketapp.servicesImp;
 
+import com.felece.ticketapp.dtos.TicketActiveDto;
 import com.felece.ticketapp.dtos.UserFilterDto;
+import com.felece.ticketapp.entities.Status;
+import com.felece.ticketapp.entities.Ticket;
 import com.felece.ticketapp.entities.User;
 import com.felece.ticketapp.repositories.UserRepository;
 import com.felece.ticketapp.services.UserService;
@@ -39,11 +42,11 @@ public class UserServiceImp implements UserService {
         Optional<User> user = userRepository.findById(userId);
         if (user.isPresent()){
             User foundUser = user.get();
-            foundUser.setName(newUser.getName());
+            foundUser.setFirstname(newUser.getFirstname());
             foundUser.setLastName(newUser.getLastName());
             foundUser.setPassword(newUser.getPassword());
             foundUser.setPhoneNumber(newUser.getPhoneNumber());
-            foundUser.setIndividualMail(newUser.getIndividualMail());
+            foundUser.setEmail(newUser.getEmail());
             userRepository.save(foundUser);
             return foundUser;
         }
@@ -54,10 +57,17 @@ public class UserServiceImp implements UserService {
         }
     }
 
+
     @Override
     public UserFilterDto filterById(Long userId) {
         return userRepository.filterById(userId);
     }
+
+    @Override
+    public User getOneUserByUserName(String userName) {
+        return userRepository.findByFirstname(userName);
+    }
+
 }
 
 
