@@ -25,4 +25,4 @@ Bilet Uygulaması
 
 <img src="https://user-images.githubusercontent.com/83172478/214829886-d68e46e4-97ce-4343-b48a-02c8b85cf3dc.png" width="900" height="600"/>
 
-<p style="font-style: italic;">* Projemde token ile giriş yaptıktan sonra apilere gönderdiğim isteklerde sanki giriş yapmamışım gibi apilere erişim izni alamadım. Bu hatayı her ne kadar çözmeyi denesem de bir çözüm bulamadım. Bu yüzden Spring Security ile alakalı class'ları yorum satırına aldım.</p>
+* Projemde token ile giriş yaptıktan sonra apilere gönderdiğim isteklerde sanki giriş yapmamışım gibi apilere erişim izni alamadım. Bu hatayı her ne kadar çözmeyi denesem de bir çözüm bulamadım. Bu yüzden Spring Security ile alakalı class'ları yorum satırına aldım. *
