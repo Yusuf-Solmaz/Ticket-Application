@@ -8,6 +8,7 @@ Bilet Uygulaması
  * Spring Security 
  * JSON Web Tokens (JWT)
  * Maven
+ * MySQL
  
 ### Projedeki Filtreleme Örnekleri (Sadece Birkaçı)
 
